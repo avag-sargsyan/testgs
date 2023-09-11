@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Pack Calculator</title>
+</head>
+<body>
+<h1>Pack Calculator</h1>
+<input type="number" id="order" placeholder="Enter order size">
+<button onclick="calculatePacks()">Calculate</button>
+<div id="result"></div>
+
+<script>
+    function calculatePacks() {
+        var order = document.getElementById("order").value;
+        fetch('/api/packs?order=' + order)
+        .then(response => response.json())
+        .then(data => {
+            document.getElementById("result").innerText = JSON.stringify(data);
+        });
+    }
+</script>
+</body>
+</html>
